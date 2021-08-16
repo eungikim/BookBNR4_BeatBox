@@ -18,13 +18,18 @@ class BeatBox(private val assets: AssetManager) {
         .setMaxStreams(MAX_SOUNDS)
         .build()
 
+    var playbackSpeed: Float = 1.0f
+        set(float) {
+            field = float / 100
+        }
+
     init {
         sounds = loadSounds()
     }
 
     fun play(sound: Sound) {
         sound.soundId?.let {
-            soundPool.play(it, 1.0f, 1.0f, 1, 0, 1.0f)
+            soundPool.play(it, 1.0f, 1.0f, 1, 0, playbackSpeed)
         }
     }
 

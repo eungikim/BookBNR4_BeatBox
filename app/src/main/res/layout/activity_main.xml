@@ -3,10 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity" />
+        android:orientation="vertical"
+        tools:context=".MainActivity"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/seek_bar_text_view"
+            />
+
+        <TextView
+            android:id="@+id/seek_bar_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+            app:layout_constraintBottom_toTopOf="@+id/seek_bar"
+            android:text="@string/seekbar_playback_speed"
+            tools:text="Playback Speed 100%"
+            />
+
+        <SeekBar
+            android:id="@+id/seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:progress="50"
+            android:max="150"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
